@@ -57,7 +57,7 @@ export const Navbar = () => {
                         exact
                         to="/login"
                     >
-                        LoginFacebook
+                        Iniciar Sesión
                     </NavLink>
                 </ul>
             </div>

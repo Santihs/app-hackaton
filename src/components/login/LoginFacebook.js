@@ -13,11 +13,12 @@ export const LoginFacebook = () => {
     }
 
     return (
-        <div className="container pt-4 text-center">
+        <div className="container pt-4">
             <FacebookLogin
                 appId="997838757627601"
                 fields="name,email,picture"
                 callback={resopnseFacebook}
+                textButton="Iniciar Sesión con Facebook"
             />
 
         </div>
