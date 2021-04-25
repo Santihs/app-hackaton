@@ -1,14 +1,11 @@
 
 
 export const getObject = (datos) => {
-    const { email, id , name, picture} = datos;
-    const { data } = !!picture;
-    const { url } = !!data
+    const { email, id , name} = datos;
 
     return {
         id,
         name,
         email,
-        url,
     }
 }
