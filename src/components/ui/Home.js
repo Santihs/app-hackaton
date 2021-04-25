@@ -17,7 +17,7 @@ export const Home = () => {
     }, [])
 
     return (
-        <div className="container text-white">
+        <div className="container text-white animate__animated animate__fadeIn">
             <div className=" pt-5">
                 {
                     datos?.map((dato, i) => <Denuncia key={i} dato={dato} />)

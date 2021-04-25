@@ -13,7 +13,8 @@ export const LoginFacebook = () => {
     }
 
     return (
-        <div className="container pt-4">
+        <div className="container pt-4 text-white animate__animated animate__fadeIn">
+            <h3>Inicie Sesión con Facebook para poder subir su encuesta</h3>
             <FacebookLogin
                 appId="997838757627601"
                 fields="name,email,picture"

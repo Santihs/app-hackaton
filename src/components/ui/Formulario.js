@@ -29,6 +29,7 @@ export const Formulario = () => {
 
 
     let data = localStorage.getItem('denuncias')
+    // console.log(denuncias
 
     useEffect(() => {
         localStorage.setItem('denuncias', JSON.stringify([]))
@@ -39,27 +40,40 @@ export const Formulario = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (objectDatos.id !== undefined) {
-            const res = {
-                ...formValues,
-                ...objectDatos
+        console.log(formValues.tipoDenuncia.length)
+        if(formValues.tipoDenuncia.length > 2 && formValues.descripcionDenuncia.length > 2 && formValues.adjuntarLink.length > 5){
+            if (objectDatos.id !== undefined) {
+                const res = {
+                    ...formValues,
+                    ...objectDatos
+                }
+                if( denuncias !== null){
+                    setDenuncias([...denuncias, res])
+                    reset()
+                    toast('Se ha añadido su denuncia se le contactará en 7 dias para comprobar la veracidad de la denuncia', {
+                        type: 'success'
+                    })
+                } else {
+                    setDenuncias(JSON.parse(data))
+                }
+                setIsVisible(false)
             }
-            setDenuncias([...denuncias, res])
-            reset()
-            toast('Se ha añadido su denuncia se le contactará en 7 dias para comprobar la veracidad de la denuncia', {
-                type: 'success'
-            })
-        }
-        else {
-            toast('Debe registrarse para llenar los dadtos', {
+            else {
+                toast('Debe registrarse para llenar los dadtos', {
+                    type: 'error'
+                })
+                setIsVisible(true);
+            }
+        } else {
+            toast('Debe agregar datos válidos', {
                 type: 'error'
             })
-            setIsVisible(true);
         }
+        
     }
 
     return (
-        <div className="container pt-4 ">
+        <div className="container pt-4 animate__animated animate__fadeIn">
             <form className="card card-body bg-light" onSubmit={handleSubmit}>
                 <fieldset className="card card-body bg-light">
                     <legend>Formulario</legend>
@@ -73,7 +87,9 @@ export const Formulario = () => {
                             name="tipoDenuncia"
                             onChange={handleInputChange}
                             value={tipoDenuncia}
+                            required
                         />
+                        
                     </label>
                     <label className="col-form-label">
                         Descripción de la Denuncia
@@ -85,6 +101,7 @@ export const Formulario = () => {
                             name="descripcionDenuncia"
                             onChange={handleInputChange}
                             value={descripcionDenuncia}
+                            required
                         />
                     </label>
                     <label className="col-form-label">
@@ -97,6 +114,7 @@ export const Formulario = () => {
                             name="adjuntarLink"
                             onChange={handleInputChange}
                             value={adjuntarLink}
+                            required
                         />
                     </label>
 
@@ -114,6 +132,8 @@ export const Formulario = () => {
                     <LoginFacebook />
 
                 </div>
+
+                
             }
 
         </div>
