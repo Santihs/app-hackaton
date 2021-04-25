@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import logo from './LOGOH.png'
 
 export const Navbar = () => {
     return (
@@ -9,7 +10,7 @@ export const Navbar = () => {
                 className="navbar-brand"
                 to="/"
             >
-                Servicio de Seguridad
+                <img src={logo} className="d-inline-block ajustar" alt=""/>
             </Link>
 
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,7 +57,7 @@ export const Navbar = () => {
                         exact
                         to="/login"
                     >
-                        Logout
+                        LoginFacebook
                     </NavLink>
                 </ul>
             </div>

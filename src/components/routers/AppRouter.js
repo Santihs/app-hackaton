@@ -4,12 +4,14 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
+    Redirect
 } from "react-router-dom";
 
 import { Navbar } from '../ui/Navbar';
 import { Home } from '../ui/Home';
 import { Formulario } from '../ui/Formulario';
 import { Contacto } from '../ui/Contacto';
+import { LoginFacebook } from '../login/LoginFacebook';
 
 export const AppRouter = () => {
     return (
@@ -24,6 +26,9 @@ export const AppRouter = () => {
 
                     <Route exact path="/contacto" component={ Contacto } />
 
+                    <Route exact path="/login" component={ LoginFacebook } />
+
+                    <Redirect to="/" />
                 </Switch>
             </div>
         </Router>

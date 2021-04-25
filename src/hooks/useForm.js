@@ -17,6 +17,13 @@ export const useForm = ( initialState = {} ) => {
 
     };
 
-    return [ formValues, handleInputChange, reset ];
+    const añadirDatos = (objeto) => {
+        setFormValues({
+            ...formValues,
+            objeto
+        })
+    }
+
+    return [ formValues, handleInputChange, reset, añadirDatos ];
 
 }

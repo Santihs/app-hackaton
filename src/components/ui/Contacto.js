@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Contacto = () => {
     return (
-        <div className="container">
+        <div className="container text-white">
             <h3>Contacto</h3>
             <p> Ciberacoso es acoso o intimidación por medio de las tecnologías digitales. Puede ocurrir en las redes sociales, las plataformas de mensajería, las plataformas de juegos y los teléfonos móviles. Es un comportamiento que se repite y que busca atemorizar, enfadar o humillar a otras personas. Por ejemplo:
             

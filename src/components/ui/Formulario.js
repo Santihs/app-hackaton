@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { getObject } from '../../helpers/getObject'
+import { UserContext } from '../../hooks/useContext'
 import { useForm } from '../../hooks/useForm'
-import { LoginFacebook } from '../../login/LoginFacebook';
 
 export const Formulario = () => {
+
+    const { datos } = useContext(UserContext)
 
     const [formValues, handleInputChange, reset] = useForm({
         tipoDenuncia: '',
@@ -12,16 +15,24 @@ export const Formulario = () => {
 
     const { tipoDenuncia, descripcionDenuncia, adjuntarLink } = formValues;
 
+    const objectDatos = getObject(datos);
+
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(formValues)
+        if(datos.id !== null){
+            const res = {
+                ...formValues,
+                ...objectDatos
+            }
+            console.log(res)
+        }
         reset()
     }
 
     return (
-        <div className="container">
-            <form className="pt-4" onSubmit={ handleSubmit }>
-                <fieldset className="card card-body">
+        <div className="container pt-4 ">
+            <form className="card card-body bg-light" onSubmit={handleSubmit}>
+                <fieldset className="card card-body bg-light">
                     <legend>Formulario</legend>
                     <label className="col-form-label">
                         Tipo Denuncia
@@ -62,10 +73,11 @@ export const Formulario = () => {
 
                     <div className="modal-footer">
                         <button className="btn btn-primary">Enviar Denuncia</button>
-                        {/* <LoginFacebook/> */}
+
                     </div>
                 </fieldset>
             </form>
+
         </div>
     )
 }
